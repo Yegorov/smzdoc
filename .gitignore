@@ -11,6 +11,7 @@
 *.dll
 *.so
 *.dylib
+smzdoc
 
 # Test binary, built with `go test -c`
 *.test
@@ -113,3 +114,9 @@ fabric.properties
 !.idea/runConfigurations
 
 # End of https://www.toptal.com/developers/gitignore/api/go,goland+all
+
+configs/*.yml
+!configs/*.yml.example
+
+templates/*
+!templates/*.example
