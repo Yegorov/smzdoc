@@ -120,3 +120,4 @@ configs/*.yml
 
 templates/*
 !templates/*.example
+!templates/.gitkeep
