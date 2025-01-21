@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"time"
 
 	"gopkg.in/yaml.v3"
 )
+
+var dataConfigPath string = "configs/data_config.yml"
 
 type DataConfig struct {
 	TitleName  string `yaml:"title_name"`
@@ -23,7 +26,9 @@ func NewDataConfig() *DataConfig {
 }
 
 func (dc *DataConfig) ReadFromConfigs() {
-	data, err := os.ReadFile("configs/data_config.yml")
+	dir, _ := os.Getwd()
+	dcf := path.Join(dir, dataConfigPath)
+	data, err := os.ReadFile(dcf)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -33,7 +38,7 @@ func (dc *DataConfig) ReadFromConfigs() {
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
-	fmt.Printf("--- dc:\n%v\n\n", dc)
+	// fmt.Printf("--- dc:\n%v\n\n", dc)
 }
 
 func (dc *DataConfig) GetDateTime() time.Time {
