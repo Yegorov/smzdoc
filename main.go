@@ -2,11 +2,11 @@ package main
 
 import "fmt"
 
-import "github.com/Yegorov/smzdoc/models"
+import "github.com/Yegorov/smzdoc/cnfg"
 
 func main() {
 	fmt.Println("smzdoc")
-	dc := models.NewDataConfig()
-	dc.ReadFromConfigs()
-	fmt.Println(dc.GetDateTime())
+	ud := cnfg.NewUserData()
+	ud.Load()
+	fmt.Println(ud.DateTime())
 }

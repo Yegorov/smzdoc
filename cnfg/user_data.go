@@ -1,4 +1,4 @@
-package models
+package cnfg
 
 import (
 	"fmt"
@@ -10,9 +10,14 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-var dataConfigPath string = "configs/data_config.yml"
+var userDataPath string = "configs/user_data.yml"
 
-type DataConfig struct {
+func UserDataFullPath() string {
+	dir, _ := os.Getwd()
+	return path.Join(dir, userDataPath)
+}
+
+type UserData struct {
 	TitleName  string `yaml:"title_name"`
 	FullFIO    string `yaml:"full_fio"`
 	ShortFIO   string `yaml:"short_fio"`
@@ -21,14 +26,12 @@ type DataConfig struct {
 	Date       string `yaml:"date"`
 }
 
-func NewDataConfig() *DataConfig {
-	return &DataConfig{}
+func NewUserData() *UserData {
+	return &UserData{}
 }
 
-func (dc *DataConfig) ReadFromConfigs() {
-	dir, _ := os.Getwd()
-	dcf := path.Join(dir, dataConfigPath)
-	data, err := os.ReadFile(dcf)
+func (dc *UserData) Load() {
+	data, err := os.ReadFile(UserDataFullPath())
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -41,7 +44,7 @@ func (dc *DataConfig) ReadFromConfigs() {
 	// fmt.Printf("--- dc:\n%v\n\n", dc)
 }
 
-func (dc *DataConfig) GetDateTime() time.Time {
+func (dc *UserData) DateTime() time.Time {
 	datetime := time.Now().Local()
 	if dc.Date != "" {
 		var err error
