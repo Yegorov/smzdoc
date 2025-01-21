@@ -1,16 +1,19 @@
 .DEFAULT_GOAL := all
-.PHONY: run build fmt test
+.PHONY: run fmt lint test build
 
 run:
 	go run main.go
 
-build:
-	go build -o smzdoc
-
 fmt:
 	gofmt -w -s .
+
+lint:
+	go vet ./...
 
 test:
 	go test -v ./...
 
-all: fmt test build
+build:
+	go build -o smzdoc
+
+all: fmt lint test build
