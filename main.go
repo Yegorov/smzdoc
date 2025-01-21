@@ -8,5 +8,5 @@ func main() {
 	fmt.Println("smzdoc")
 	dc := models.NewDataConfig()
 	dc.ReadFromConfigs()
-	fmt.Println(dc)
+	fmt.Println(dc.GetDateTime())
 }
