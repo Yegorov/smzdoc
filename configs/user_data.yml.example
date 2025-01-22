@@ -6,4 +6,5 @@ price: 10000
 currency: RUB
 currency_label: руб.
 contract_no: AA/25/0001
+short_contragent_name: ИИИ
 date: 2025-01-01

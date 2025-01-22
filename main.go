@@ -1,12 +1,15 @@
 package main
 
 import "fmt"
-
 import "github.com/Yegorov/smzdoc/cnfg"
+import "github.com/Yegorov/smzdoc/action"
 
 func main() {
-	fmt.Println("smzdoc")
+	fmt.Println(cnfg.WelcomeMsg())
+	c := cnfg.NewConfig()
 	ud := cnfg.NewUserData()
 	ud.Load()
-	fmt.Println(ud.DateTime())
+	conf := &cnfg.Conf{ud, c}
+
+	action.GenAcceptCertificate(conf)
 }

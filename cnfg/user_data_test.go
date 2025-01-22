@@ -48,3 +48,14 @@ func TestGetDateTime(t *testing.T) {
 		t.Errorf("Error got: %v, want: %v.", gotDateTime, wantDateTime)
 	}
 }
+
+func TestInitialsFIO(t *testing.T) {
+	user_cnfg := NewUserData()
+	user_cnfg.Load()
+
+	want := "ЕАА"
+	got := user_cnfg.InitialsFIO()
+	if got != want {
+		t.Errorf("Error got: %v, want: %v.", got, want)
+	}
+}
