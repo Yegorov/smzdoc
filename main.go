@@ -9,7 +9,7 @@ func main() {
 	c := cnfg.NewConfig()
 	ud := cnfg.NewUserData()
 	ud.Load()
-	conf := &cnfg.Conf{ud, c}
+	conf := &cnfg.Conf{Ud: ud, C: c}
 
 	action.GenAcceptCertificate(conf)
 }

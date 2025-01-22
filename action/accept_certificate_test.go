@@ -16,7 +16,7 @@ func TestGenAcceptCertificate(t *testing.T) {
 	c := cnfg.NewConfig()
 	ud := cnfg.NewUserData()
 	ud.Load()
-	conf := &cnfg.Conf{ud, c}
+	conf := &cnfg.Conf{Ud: ud, C: c}
 
 	outputFile := "../output/2025-01-01_ЕАА_ИИИ_Акт-dev.docx"
 	GenAcceptCertificate(conf)
