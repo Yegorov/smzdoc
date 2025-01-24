@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := all
-.PHONY: run fmt vet tidy test build
+.PHONY: run fmt vet tidy test build upgrade vendor
 
 run:
 	go run main.go
@@ -18,5 +18,12 @@ test:
 
 build:
 	go build -o smzdoc
+
+upgrade:
+	go get -u
+	go mod tidy
+
+vendor:
+	go mod vendor
 
 all: fmt vet tidy test build
